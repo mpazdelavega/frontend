@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Product } from '../../model/product';
 
 @Component({
   selector: 'navbar',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  
+  @Input() product: Product[] = [];
+
+  @Input() paginator = {}
 }
