@@ -1,0 +1,12 @@
+.navbar {
+    justify-content: center; /* Centra el contenido del navbar */
+  background: linear-gradient(to right, #f0f0f0, #c0c0c0); /* Degradado de izquierda a derecha */
+  /* Otros estilos del navbar */
+  }
+  
+.navbar-nav {
+    flex-direction: row;
+}
+.nav-item {
+    margin: 0 15px;
+}

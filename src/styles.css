@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    /* Fondo con degradado */
+    background: linear-gradient(to bottom, #333333, #555555);
+    /* Color de texto claro para mayor legibilidad */
+    color: #ffffff;
+  }

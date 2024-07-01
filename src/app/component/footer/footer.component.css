@@ -1,0 +1,24 @@
+.footer {
+  background: linear-gradient(to right, #f0f0f0, #c0c0c0); /* Degradado de izquierda a derecha */
+  padding: 20px 0; /* Espaciado vertical */
+  color: #343a40; /* Color del texto negro */
+}
+
+.footer p {
+  margin: 0;
+}
+
+.social-links {
+  margin-top: 10px;
+}
+
+.social-links a {
+  margin: 0 10px; /* Espaciado horizontal entre enlaces */
+  color: #343a40; /* Color del texto negro */
+  text-decoration: none;
+  font-weight: bold; /* Texto en negrita */
+}
+
+.social-links a:hover {
+  color: #007bff; /* Color del texto en hover */
+}

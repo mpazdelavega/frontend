@@ -1,0 +1,8 @@
+.card {
+    width: 100%; /* Ancho deseado de la card */
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: auto;
+  }
