@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
 import { CardComponent } from './component/card/card.component';
+import { ShoppingCartComponent } from './component/shopping-cart/shopping-cart.component';
 
 export const routes: Routes = [
     {
-        path: '',
+        path: 'products',
         pathMatch: 'full',
         redirectTo: '/products/page/0'
     },
@@ -12,7 +13,11 @@ export const routes: Routes = [
         component: CardComponent
     },
     {
-        path: 'products', 
-        component: CardComponent
+        path: 'cart',
+        component: ShoppingCartComponent
     }
+    // {
+    //     path: 'products', 
+    //     component: CardComponent
+    // }
 ];

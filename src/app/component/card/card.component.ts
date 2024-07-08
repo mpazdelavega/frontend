@@ -1,26 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Product } from '../../model/product';
 import { ProductService } from '../../service/product.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { SharingDataService } from '../../service/sharing-data.service';
 import { PaginatorComponent } from '../paginator/paginator.component';
+import { CarouselComponent } from '../carousel/carousel.component';
+import { CartService } from '../../service/cart.service';
 
 @Component({
   selector: 'card',
   standalone: true,
-  imports: [RouterModule, PaginatorComponent],
+  imports: [RouterModule, PaginatorComponent, CarouselComponent],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
 export class CardComponent {
   
   title: string = 'Productos';
-
   product: Product[] = [];
   paginator: any = {};
 
+  @Input() productCart: any;
+
   constructor(
     private service: ProductService,
+    private cartService: CartService,
     private sharingData: SharingDataService,
     private router: Router,
     private route: ActivatedRoute
@@ -40,6 +44,13 @@ export class CardComponent {
         });
       })
     }
+  }
+
+  addToCart(productId: number): void {
+    console.log("Se agrego el producto id " + productId + " al carro")
+    this.cartService.addToCart(productId).subscribe(() => {
+      this.cartService.loadCartItems();
+    });
   }
 
 }

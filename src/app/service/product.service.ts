@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
-  private product: Product[] = [];
+  //private product: Product[] = [];
 
   private url: string = 'http://localhost:8080/api/products';
 

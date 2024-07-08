@@ -1,6 +1,8 @@
-<navbar [product]="product" [paginator]="paginator"/>
-<carousel />
-<image-card />
+<navbar [product]="product" [paginator]="paginator" [productCart]="productCart"/>
+<div *ngIf="isHomePage()">
+    <carousel></carousel>
+    <image-card></image-card>
+  </div>
 <router-outlet />
 <footer1 />
 

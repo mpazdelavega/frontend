@@ -1,17 +1,20 @@
-<div class="container mt-5">
+<div class="container custom-container mt-5">
   @if (product.length == 0) {
   <div class="class alert-warning">No hay registros en el sistema</div>
   } @else {
-  <div class="row justify-content-center g-2">
+  <div class="row justify-content-center g-4">
+    <div class="col-12 text-center"> <!-- Ajuste para centrar -->
+      <h1>Futbol</h1>
+    </div>
     @for (product of product; track $index){
     <div class="col-6 col-md-4 col-lg-3 mb-3">
       <div class="card mb-3">
         <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagen del producto">
         <div class="card-body">
           <h5 class="card-title"> {{product.name}} </h5>
-          <p class="card-text">Descripción breve.</p>
-          <p class="card-price"><strong> {{product.quantity}}$ </strong></p>
-          <a href="#" class="btn btn-primary">Agregar al carrito</a>
+          <p class="card-text">Cantidad</p>
+          <p class="card-price"><strong> {{product.price}} </strong></p>
+          <button (click)="addToCart(product.id)" class="btn btn-primary">Agregar al carrito</button>
         </div>
       </div>
     </div>

@@ -5,37 +5,52 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { FooterComponent } from './footer/footer.component';
 import { ImageCardComponent } from './image-card/image-card.component';
 import { Product } from '../model/product';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { ProductService } from '../service/product.service';
 import { SharingDataService } from '../service/sharing-data.service';
+import { CommonModule } from '@angular/common';
+import { CartProduct } from '../model/cart';
+import { CartService } from '../service/cart.service';
 
 @Component({
   selector: 'page-app',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, CardComponent, CarouselComponent, FooterComponent, ImageCardComponent],
+  imports: [RouterOutlet, CommonModule, NavbarComponent, CardComponent, CarouselComponent, FooterComponent, ImageCardComponent],
   templateUrl: './page-app.component.html'
 })
 export class PageAppComponent {
   
   product: Product[] = [];
   paginator: any = {};
+  currentRoute!: string;
+  productCart: CartProduct[] = [];
 
   constructor(
     private router: Router,
+    private cartService: CartService,
     private service: ProductService,
     private sharingData: SharingDataService,
   private route: ActivatedRoute) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.urlAfterRedirects;
+      }
+    });
+  }
+  
+  ngOnInit(): void {
+    this.pageUsersEvent();
+    this.loadCartItemCount();
   }
 
-  ngOnInit(): void {
-    // this.service.findAll().subscribe(users => this.users = users);
+  loadCartItemCount(): void {
+    this.cartService.loadCartItems().subscribe((items) => {
+      this.productCart = items; // Obtener la cantidad de productos en el carrito
+    });
+  }
 
-    // this.route.paramMap.subscribe(params => {
-    //   const page = +(params.get('page') || '0');
-    //   console.log(page)
-    //   // this.service.findAllPageable(page).subscribe(pageable => this.users = pageable.content as User[]);
-    // })
-    this.pageUsersEvent();
+  isHomePage(): boolean {
+    return this.currentRoute === '/';
   }
 
   pageUsersEvent() {

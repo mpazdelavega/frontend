@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <h2>Carrito de Compras</h2>
+  <div *ngIf="!cartItems.length" class="alert alert-warning">El carrito está vacío</div>
+  <div *ngIf="cartItems.length" class="row">
+    <div *ngFor="let cart of cartItems" class="col-12 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Nombre: {{ cart.product.name }}</h5>
+          <p class="card-text">Cantidad: {{ cart.quantity }}</p>
+          <p class="card-text">Precio: {{ cart.product.price }}.99$</p>
+          <button class="btn btn-danger" (click)="removeFromCart(cart.id_cart)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
