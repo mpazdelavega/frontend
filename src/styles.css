@@ -1,6 +1,6 @@
 body {
-    /* Fondo con degradado */
-    background: linear-gradient(to bottom, #333333, #555555);
-    /* Color de texto claro para mayor legibilidad */
-    color: #ffffff;
-  }
+  background: linear-gradient(to bottom, #333333, #555555); /* Ejemplo de color oscuro */
+  color: #ffffff; /* Color del texto para que sea visible sobre el fondo oscuro */
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

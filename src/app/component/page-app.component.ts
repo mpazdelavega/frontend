@@ -9,7 +9,6 @@ import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/ro
 import { ProductService } from '../service/product.service';
 import { SharingDataService } from '../service/sharing-data.service';
 import { CommonModule } from '@angular/common';
-import { CartProduct } from '../model/cart';
 import { CartService } from '../service/cart.service';
 
 @Component({
@@ -23,7 +22,6 @@ export class PageAppComponent {
   product: Product[] = [];
   paginator: any = {};
   currentRoute!: string;
-  productCart: CartProduct[] = [];
 
   constructor(
     private router: Router,
@@ -40,13 +38,6 @@ export class PageAppComponent {
   
   ngOnInit(): void {
     this.pageUsersEvent();
-    this.loadCartItemCount();
-  }
-
-  loadCartItemCount(): void {
-    this.cartService.loadCartItems().subscribe((items) => {
-      this.productCart = items; // Obtener la cantidad de productos en el carrito
-    });
   }
 
   isHomePage(): boolean {

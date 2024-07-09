@@ -16,19 +16,25 @@ export class NavbarComponent implements OnInit{
 
   @Input() paginator = {}
 
-  @Input() productCart: CartProduct[] = [];
+  //@Input() productCart: CartProduct[] = [];
 
-  cartCount: number = 0;
+  cartItems: CartProduct[] = [];
+
+  cartItemCount: number = 0;
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.loadCartItemCount();
-  }
-
-  loadCartItemCount(): void {
-    this.cartService.loadCartItems().subscribe((items) => {
-      this.cartCount = items.length; // Obtener la cantidad de productos en el carrito
+    this.loadCartItems();
+    this.cartService.cartItems$.subscribe((items: CartProduct[]) => {
+      this.cartItemCount = items.length;
     });
   }
+
+  loadCartItems(): void {
+    this.cartService.loadCartItems().subscribe((items: CartProduct[]) => {
+      this.cartItems = items;
+    });
+  }
+
 }

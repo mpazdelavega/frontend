@@ -1,0 +1,11 @@
+.card-body {
+    padding: 10px;
+  }
+  
+  .card-title, .card-text {
+    margin: 5px 0;
+  }
+  
+  .btn-sm {
+    margin-top: 5px;
+  }
