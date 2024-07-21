@@ -1,0 +1,26 @@
+.c-item {
+    height: 480px;
+  }
+  
+  .c-img {
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+  }
+  
+  .btn {
+    background-color: #343a40; /* Un tono oscuro para el botón */
+    border: none;
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .c-item .btn:hover {
+    background-color: #495057; /* Un tono ligeramente más claro al pasar el ratón */
+    transform: scale(1.05);
+  }
+  
+  .c-item .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+  }

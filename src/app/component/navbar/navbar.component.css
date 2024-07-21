@@ -1,12 +1,38 @@
 .navbar {
-    justify-content: center; /* Centra el contenido del navbar */
-  background: linear-gradient(to right, #f0f0f0, #c0c0c0); /* Degradado de izquierda a derecha */
-  /* Otros estilos del navbar */
-  }
-  
+    justify-content: center;
+    background: #ffffff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .navbar-nav {
     flex-direction: row;
 }
+
 .nav-item {
     margin: 0 15px;
 }
+
+.nav-link {
+    font-weight: bold;
+    /* Establece el texto de las opciones en negrita */
+}
+
+.custom-container {
+    max-width: 1100px;
+    /* Ancho máximo del contenedor */
+    margin-left: auto;
+    /* Centrar el contenedor horizontalmente */
+    margin-right: auto;
+    /* Centrar el contenedor horizontalmente */
+}
+
+.navbar-top .navbar-text {
+    font-size: 13px;
+    /* Ajusta el tamaño de la fuente según tu preferencia */
+}
+
+.navbar-top .instagram-logo {
+    height: 20px; /* Ajusta la altura del logo de Instagram */
+    margin-left: 10px; /* Espacio a la izquierda del logo */
+  }

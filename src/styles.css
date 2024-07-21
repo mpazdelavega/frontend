@@ -1,6 +1,5 @@
 body {
-  background: linear-gradient(to bottom, #333333, #555555); /* Ejemplo de color oscuro */
+  background: #6864642c; /* Ejemplo de color oscuro */
   color: #ffffff; /* Color del texto para que sea visible sobre el fondo oscuro */
+  font-family: 'Montserrat', sans-serif;
 }
-
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

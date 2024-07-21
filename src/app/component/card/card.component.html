@@ -7,19 +7,30 @@
       <h1>Futbol</h1>
     </div>
     @for (product of product; track $index){
-    <div class="col-6 col-md-4 col-lg-3 mb-3">
-      <div class="card mb-3">
-        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagen del producto">
-        <div class="card-body">
-          <h5 class="card-title"> {{product.name}} </h5>
-          <p class="card-text">Cantidad</p>
-          <p class="card-price"><strong> {{product.price}} </strong></p>
-          <button (click)="addToCart(product.id)" class="btn btn-primary">Agregar al carrito</button>
-        </div>
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-four mb-4">
+        <figure class="card card-product-grid h-100">
+            <div class="img-wrap rounded bg-gray-light">
+                <span class="topbar">
+                    <span class="badge tag-discount">-30%</span>
+                </span>
+                <img class="mix-blend-mode"
+                    src="https://static.vecteezy.com/system/resources/previews/008/520/221/original/man-in-black-oversize-t-shirt-mockup-design-template-png.png"
+                    alt="Funko Pop! Spiderman Integrated Suit - Marvel: Spiderman No Way Home">
+            </div>
+            <figcaption class="card-product-info">
+                <a href="" class="title">{{product.name}}</a>
+                <div class="price-wrap">
+                    <span class="price me-2">$ {{product.price}}</span>
+                    <del class="discount-price">$24.990</del>
+                </div>
+                <button class="btn btn-sm w-100 mt-2" (click)="addToCart(product.id)">Agregar a carrito</button>
+                <button class="btn btn-sm w-100 mt-2" [routerLink]="['/product', product.id]">Detalles</button>
+            </figcaption>
+        </figure>
       </div>
-    </div>
     }
   </div>
   }
   <paginator [paginator]="paginator" [url]="'/products/page'" />
 </div>
+<!--  -->

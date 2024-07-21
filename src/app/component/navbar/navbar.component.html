@@ -1,6 +1,29 @@
+<nav class="navbar-top navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+                <div class="navbar-text">
+                    <span class="text-white me-4">ENVÍO GRATIS DESDE LOS $24.990</span>
+                    <span class="text-white me-4">ESCRÍBENOS O LLÁMANOS +56 912345678</span>
+                    <span class="text-white me-4">LU - VI: 11:00 - 19:30 SA: 11:00 - 15:00</span>
+                    <a href="#" target="_blank" class="text-white me-2">
+                        <fa-icon [icon]="['fab', 'instagram']" size="lg"></fa-icon>
+                    </a>
+                    <a href="#" target="_blank" class="text-white me-2">
+                        <fa-icon [icon]="['fab', 'facebook']" size="lg"></fa-icon>
+                    </a>
+                    <a href="#" target="_blank" class="text-white">
+                        <fa-icon [icon]="['fab', 'whatsapp']" size="lg"></fa-icon>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg">
-    <div class="container">
-        <a class="navbar-brand" href="#">Brand</a>
+    <div class="container custom-container">
+        <a class="navbar-brand" href="#">Logo</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,19 +31,13 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" routerLink="/">Inicio</a>
+                    <a class="nav-link" routerLink="/">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/products">Productos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Precios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/cart">Carro ({{ cartItemCount  }}) </a>
+                    <a class="nav-link" routerLink="/cart">Carro ({{ cartItemCount  }})</a>
                 </li>
             </ul>
         </div>

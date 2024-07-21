@@ -1,13 +1,21 @@
-<footer class="footer bg-light shadow-lg">
+<footer class="footer bg-dark py-3 mt-5">
   <div class="container text-center">
     <div class="row">
       <div class="col-md-12">
-        <p>&copy; 2024 Mi Sitio Web</p>
+        <nav class="footer-nav mb-3">
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="#" class="text-light">Inicio</a></li>
+            <li class="list-inline-item"><a href="#" class="text-light">Productos</a></li>
+            <li class="list-inline-item"><a href="#" class="text-light">Despachos</a></li>
+            <li class="list-inline-item"><a href="#" class="text-light">Contacto</a></li>
+          </ul>
+        </nav>
         <div class="social-links">
-          <a href="#">Facebook</a>
-          <a href="#">Twitter</a>
-          <a href="#">Instagram</a>
+          <a href="#" class="text-light me-3"><fa-icon [icon]="['fab', 'instagram']" size="sm"></fa-icon></a>
+          <a href="#" class="text-light me-3"><fa-icon [icon]="['fab', 'facebook']" size="sm"></fa-icon></a>
+          <a href="#" class="text-light"><fa-icon [icon]="['fab', 'whatsapp']" size="sm"></fa-icon></a>
         </div>
+        <p class="mt-3 text-light">&copy; 2024 Mi Sitio Web</p>
       </div>
     </div>
   </div>
