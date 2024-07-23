@@ -1,36 +1,66 @@
 <div class="container custom-container mt-5">
-  @if (product.length == 0) {
-  <div class="class alert-warning">No hay registros en el sistema</div>
-  } @else {
-  <div class="row justify-content-center g-4">
-    <div class="col-12 text-center"> <!-- Ajuste para centrar -->
-      <h1>Futbol</h1>
+  <h6 class="text-center text-dark">Camisetas</h6>
+  <div *ngIf="product.length === 0" class="alert alert-warning">No hay registros en el sistema</div>
+  <div *ngIf="product.length > 0" class="row justify-content-center g-4">
+    <div *ngFor="let product of product | slice:0:visibleProducts; let i = index" class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-four mb-4 mt-5">
+      <figure class="card card-product-grid h-100">
+          <div class="img-wrap rounded bg-gray-light">
+              <span class="topbar">
+                  <span class="badge tag-discount"> -{{product.discount}}% </span>
+              </span>
+              <img class="mix-blend-mode"
+                  src={{product.photo}}
+                  alt="Polera Chile">
+          </div>
+          <div class="card-product-info">
+              <p class="title text-dark">{{product.name}}</p>
+              <div class="price-wrap">
+                  <span class="price me-2">$ {{product.price - (product.price * product.discount / 100)}}</span>
+                  <del class="discount-price">${{product.price}}</del>
+              </div>
+              <button class="btn btn-sm w-100 mt-2" (click)="addToCart(product.id)">Agregar a carrito</button>
+              <button class="btn btn-sm w-100 mt-2" [routerLink]="['/product', product.id]">Detalles</button>
+          </div>
+      </figure>
     </div>
-    @for (product of product; track $index){
-      <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-four mb-4">
-        <figure class="card card-product-grid h-100">
-            <div class="img-wrap rounded bg-gray-light">
-                <span class="topbar">
-                    <span class="badge tag-discount">-30%</span>
-                </span>
-                <img class="mix-blend-mode"
-                    src="https://static.vecteezy.com/system/resources/previews/008/520/221/original/man-in-black-oversize-t-shirt-mockup-design-template-png.png"
-                    alt="Funko Pop! Spiderman Integrated Suit - Marvel: Spiderman No Way Home">
-            </div>
-            <figcaption class="card-product-info">
-                <a href="" class="title">{{product.name}}</a>
-                <div class="price-wrap">
-                    <span class="price me-2">$ {{product.price}}</span>
-                    <del class="discount-price">$24.990</del>
-                </div>
-                <button class="btn btn-sm w-100 mt-2" (click)="addToCart(product.id)">Agregar a carrito</button>
-                <button class="btn btn-sm w-100 mt-2" [routerLink]="['/product', product.id]">Detalles</button>
-            </figcaption>
-        </figure>
-      </div>
-    }
   </div>
-  }
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <button *ngIf="showViewMoreButton" routerLink="/products" class="btn btn-primary mt-3">Ver más</button>
+    </div>
+  </div>
+
+  <h6 class="text-center text-dark mt-5">Suplementos</h6>
+  <div *ngIf="supplementProducts.length === 0" class="alert alert-warning">No hay registros en el sistema</div>
+  <div *ngIf="supplementProducts.length > 0" class="row justify-content-center g-4">
+    <div *ngFor="let product of supplementProducts | slice:0:4" class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-four mb-4 mt-5">
+      <figure class="card card-product-grid h-100">
+          <div class="img-wrap rounded bg-gray-light">
+              <span class="topbar">
+                  <span class="badge tag-discount"> -{{product.discount}}% </span>
+              </span>
+              <img class="mix-blend-mode"
+                  src={{product.photo}}
+                  alt="Suplemento">
+          </div>
+          <div class="card-product-info">
+              <p class="title text-dark">{{product.name}}</p>
+              <div class="price-wrap">
+                  <span class="price me-2">$ {{product.price - (product.price * product.discount / 100)}}</span>
+                  <del class="discount-price">${{product.price}}</del>
+              </div>
+              <button class="btn btn-sm w-100 mt-2" (click)="addToCart(product.id)">Agregar a carrito</button>
+              <button class="btn btn-sm w-100 mt-2" [routerLink]="['/product', product.id]">Detalles</button>
+          </div>
+      </figure>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <button *ngIf="showViewMoreButton" routerLink="/products" class="btn btn-primary mt-3">Ver más</button>
+    </div>
+  </div>
   <paginator [paginator]="paginator" [url]="'/products/page'" />
 </div>
-<!--  -->

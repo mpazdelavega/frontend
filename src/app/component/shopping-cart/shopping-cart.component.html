@@ -7,7 +7,7 @@
     <div class="col-md-8">
       <div *ngFor="let cart of cartItems" class="col-12 mb-4">
         <div class="card card-cart bg-light-subtle">
-          <img src="https://static.vecteezy.com/system/resources/previews/008/520/221/original/man-in-black-oversize-t-shirt-mockup-design-template-png.png" class="card-img-top" alt="...">
+          <img src={{cart.product.photo}} class="card-img-top" alt="...">
           <div class="card-body card-body-cart">
             <div class="text-section">
               <h5 class="card-title fw-bold">{{ cart.product.name }}</h5>

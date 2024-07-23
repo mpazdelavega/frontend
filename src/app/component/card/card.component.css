@@ -45,10 +45,10 @@
   }
   
   .card-product-grid .title {
-    color: #6a6f74;
+    /* color: #6a6f74; */
     height: 2.6rem;
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 16px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -93,7 +93,8 @@
   }
 
   .btn:hover{
-    background-color: gray;
+    background-color: #e13454;
     color: #fff;
   }
   
+ 
