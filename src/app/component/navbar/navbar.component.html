@@ -37,6 +37,12 @@
                     <a class="nav-link" routerLink="/products">Productos</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" routerLink="/products" [queryParams]="{ category: 'camiseta' }">Camisetas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/products" [queryParams]="{ category: 'suplemento' }">Suplementos</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" routerLink="/cart">Carro ({{ cartItemCount  }})</a>
                 </li>
             </ul>

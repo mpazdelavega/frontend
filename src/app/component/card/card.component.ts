@@ -26,7 +26,7 @@ export class CardComponent {
   visibleProducts: number = 4;
   showViewMoreButton: boolean = true;
   @Input() supplementProducts: Product[] = [];
-
+  showSupplements: boolean = true;
   @Input() productCart: any;
 
   constructor(
@@ -45,24 +45,30 @@ export class CardComponent {
         // URL base (/)
         this.visibleProducts = 4;
         this.showViewMoreButton = true;
+        this.showSupplements = true;
         this.service.getProductsByCategory('camiseta').subscribe(products => {
           this.product = products;
-          this.sharingData.pageProductEventEmitter.emit({product: this.product, paginator: this.paginator});
+          this.sharingData.pageProductEventEmitter.emit({ product: this.product, paginator: this.paginator });
         });
         this.service.getProductsByCategory('suplemento').subscribe(supplements => {
           this.supplementProducts = supplements; // Asignación de datos a supplementProducts
         });
       } else if (url === 'products/page/0') {
+        const category = this.route.snapshot.queryParamMap.get('category');
         this.visibleProducts = 8;
         this.showViewMoreButton = false;
-        this.route.paramMap.subscribe(params => {
-          const page = +(params.get('page') || '0');
-          this.service.findAllPageable(page).subscribe(pageable => {
-            this.product = pageable.content as Product[];
-            this.paginator = pageable;
-            this.sharingData.pageProductEventEmitter.emit({product: this.product, paginator: this.paginator});
+        this.showSupplements = false;
+        if (category) {
+          this.service.getProductsByCategory(category).subscribe(products => {
+            this.product = products;
+            this.sharingData.pageProductEventEmitter.emit({ product: this.product, paginator: this.paginator });
           });
-        });
+        } else {
+          this.service.findAll().subscribe(products => {
+            this.product = products;
+            this.sharingData.pageProductEventEmitter.emit({ product: this.product, paginator: this.paginator });
+          });
+        }
       }
     });
   }
