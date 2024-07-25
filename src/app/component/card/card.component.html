@@ -1,5 +1,10 @@
 <div class="container custom-container mt-5">
-  <h6 class="text-center text-dark">Camisetas</h6>
+  @if(category){
+    <h6 class="text-center text-dark capitalize-first-letter"> {{category}} </h6>
+  } @else {
+    <h6 class="text-center text-dark capitalize-first-letter"> productos </h6>
+  }
+  
   <div *ngIf="product.length === 0" class="alert alert-warning">No hay registros en el sistema</div>
   <div *ngIf="product.length > 0" class="row justify-content-center g-4">
     <div *ngFor="let product of product | slice:0:visibleProducts; let i = index" class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-four mb-4 mt-5">
@@ -25,7 +30,7 @@
 
   <div class="row">
     <div class="col-12 text-center">
-      <button *ngIf="showViewMoreButton" routerLink="/products" class="btn btn-primary mt-3">Ver más</button>
+      <button *ngIf="showViewMoreButton" [routerLink]="['/products/filter2']" [queryParams]="{ category: 'camiseta', page: 0 }" class="btn btn-primary mt-3">Ver más</button>
     </div>
   </div>
 
@@ -54,5 +59,12 @@
       </div>
     </div>
   </div>
-  <paginator [paginator]="paginator" [url]="'/products/page'" />
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <button *ngIf="showViewMoreButton" [routerLink]="['/products/filter2']" [queryParams]="{ category: 'suplemento', page: 0 }" class="btn btn-primary mt-3">Ver más</button>
+    </div>
+  </div>
+
+  <paginator [paginator]="paginator" [category]="category" [url]="url" />
 </div>

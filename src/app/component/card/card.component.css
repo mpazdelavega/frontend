@@ -96,5 +96,9 @@
     background-color: #e13454;
     color: #fff;
   }
+
+  .capitalize-first-letter::first-letter {
+    text-transform: capitalize;
+}
   
  

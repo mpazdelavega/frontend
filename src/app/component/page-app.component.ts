@@ -21,6 +21,7 @@ export class PageAppComponent {
   
   product: Product[] = [];
   paginator: any = {};
+  category: any = {};
   currentRoute!: string;
 
   constructor(
@@ -48,6 +49,7 @@ export class PageAppComponent {
     this.sharingData.pageProductEventEmitter.subscribe(pageable => {
       this.product = pageable.product;
       this.paginator = pageable.paginator;
+      this.category = pageable.category;
     });
   }
 

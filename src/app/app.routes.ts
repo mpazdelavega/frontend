@@ -5,11 +5,6 @@ import { DetailsProductComponent } from './component/details-product/details-pro
 
 export const routes: Routes = [
     {
-        path: 'products',
-        pathMatch: 'full',
-        redirectTo: '/products/page/0'
-    },
-    {
         path: 'products/page/:page', 
         component: CardComponent
     },
@@ -20,9 +15,13 @@ export const routes: Routes = [
     {
         path: 'product/:id',
         component: DetailsProductComponent 
+    },
+    {
+        path: 'products', 
+        component: CardComponent
+    },
+    {
+        path: 'products/filter2', 
+        component: CardComponent
     }
-    // {
-    //     path: 'products', 
-    //     component: CardComponent
-    // }
 ];

@@ -23,7 +23,7 @@
 </nav>
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg">
     <div class="container custom-container">
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" routerLink="/">Logo</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,13 +34,13 @@
                     <a class="nav-link" routerLink="/">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/products">Productos</a>
+                    <a class="nav-link" routerLink="/products/page/0">Productos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/products" [queryParams]="{ category: 'camiseta' }">Camisetas</a>
+                    <a class="nav-link" [routerLink]="['/products/filter2']" [queryParams]="{ category: 'camiseta', page: 0 }">Camisetas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/products" [queryParams]="{ category: 'suplemento' }">Suplementos</a>
+                    <a class="nav-link" [routerLink]="['/products/filter2']" [queryParams]="{ category: 'suplemento', page: 0 }">Suplementos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/cart">Carro ({{ cartItemCount  }})</a>

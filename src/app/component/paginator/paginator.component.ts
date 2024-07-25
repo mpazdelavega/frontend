@@ -12,18 +12,28 @@ export class PaginatorComponent {
   @Input() url: string = '';
   @Input() paginator: any = {};
   @Input() category: string = '';
+  currentUrlState: boolean = true;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
-  getPages(): number[] {
-    return new Array(this.paginator.totalPages).fill(0).map((_, index) => index);
-  }
-
-  navigate(page: number): void {
-    if (this.category) {
-      this.router.navigate(['/products'], { queryParams: { category: this.category, page } });
-    } else {
-      this.router.navigate([this.url], { queryParams: { page } });
+  ngOnInit(): void {
+    if (this.router.url.startsWith('/products/page/')) {
+      this.currentUrlState = false;
     }
+    console.log("Categoria desde Paginator: " + this.category)
+    console.log(this.currentUrlState)
   }
+
+
+  // getPages(): number[] {
+  //   return new Array(this.paginator.totalPages).fill(0).map((_, index) => index);
+  // }
+
+  // navigate(page: number): void {
+  //   if (this.category) {
+  //     this.router.navigate(['/products'], { queryParams: { category: this.category, page } });
+  //   } else {
+  //     this.router.navigate([this.url], { queryParams: { page } });
+  //   }
+  // }
 }

@@ -18,6 +18,8 @@ export class NavbarComponent implements OnInit{
 
   @Input() paginator = {}
 
+  @Input() category = {}
+
   //@Input() productCart: CartProduct[] = [];
 
   cartItems: CartProduct[] = [];
