@@ -1,25 +1,31 @@
 <div class="container mt-5 mb-5" *ngIf="product">
-    <div class="card shadow-sm border-0">
-      <div class="row g-0">
-        <div class="col-md-6">
-          <img src={{product.photo}} alt="{{ product.name }}" class="img-fluid rounded-start w-100 h-auto">
-        </div>
-        <div class="col-md-6 d-flex flex-column justify-content-center">
-          <div class="card-body p-5">
-            <h2 class="card-title display-4">{{ product.name }}</h2>
-            <p class="card-text my-4">
-              {{ product.description }}
-            </p>
-            <p class="card-text my-4">
-              Antes: <del>$ {{ product.price }}</del>
-            </p>
-            <p class="card-text">
-              <strong class="price">Ahora: $ {{product.price - (product.price * product.discount / 100) }}</strong>
-            </p>
-            <button (click)="addToCart(product.id)" class="btn btn-secondary">Agregar al carrito</button>
+  <div class="card shadow-sm border-0">
+    <div class="row g-0">
+      <div class="col-md-6">
+        <img src="{{product.photo}}" alt="{{ product.name }}" class="img-fluid rounded-start w-100 h-auto">
+      </div>
+      <div class="col-md-6 d-flex flex-column justify-content-center">
+        <div class="card-body p-5">
+          <h2 class="card-title display-4">{{ product.name }}</h2>
+          <p class="card-text">
+            Antes: <del>$ {{ product.price }}</del>
+          </p>
+          <p class="card-text">
+            <strong class="price">Ahora: $ {{product.price - (product.price * product.discount / 100) }}</strong>
+          </p>
+          <!-- Dropdown (select) added aquí -->
+          <div class="form-group my-3">
+            <label for="productOptions">Tamaño</label>
+            <select id="productOptions" class="form-control" [(ngModel)]="selectedSize">
+              <option *ngFor="let size of sizes" [value]="size.name">{{ size.name }}</option>
+            </select>
           </div>
+          <button (click)="addToCart(product.id)" class="btn btn-secondary">Agregar al carrito</button>
+          <p class="card-text my-4 mt-5">
+            {{ product.description }}
+          </p>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

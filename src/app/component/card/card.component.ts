@@ -98,12 +98,12 @@ export class CardComponent {
     });
   }
 
-  addToCart(productId: number): void {
-    this.cartService.addToCart(productId).subscribe(() => {
-      this.cartService.loadCartItems();
-      this.showSnackBar("Producto agregado al carro");
-    });
-  }
+  // addToCart(productId: number): void {
+  //   this.cartService.addToCart(productId).subscribe(() => {
+  //     this.cartService.loadCartItems();
+  //     this.showSnackBar("Producto agregado al carro");
+  //   });
+  // }
 
   showSnackBar(message: string): void {
     this.cartService.loadCartItems();

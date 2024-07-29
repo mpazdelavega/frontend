@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../model/product';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CartProduct } from '../model/cart';
@@ -22,8 +21,8 @@ export class CartService {
     );
   }
 
-  addToCart(productId: number): Observable<any> {
-    return this.http.post(`${this.url}/add/${productId}`, {}).pipe(
+  addToCart(productId: number, size: string): Observable<any> {
+    return this.http.post(`${this.url}/add/${productId}?size=${size}`, {}).pipe(
       tap(() => {
         this.loadCartItems().subscribe();
       })
@@ -31,12 +30,10 @@ export class CartService {
   }
 
   removeFromCart(productId: number): Observable<any> {
-    
     return this.http.delete(`${this.url}/remove/${productId}`);
   }
 
   clearCart(): Observable<any> {
     return this.http.delete(`${this.url}/clear`);
   }
-
 }
