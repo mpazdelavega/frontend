@@ -7,12 +7,13 @@
     <div class="col-md-8">
       <div *ngFor="let cart of cartItems" class="col-12 mb-4">
         <div class="card card-cart bg-light-subtle">
-          <img src={{cart.product.photo}} class="card-img-top" alt="...">
+          <img src={{cart.productSize.product.photo}} class="card-img-top" alt="...">
           <div class="card-body card-body-cart">
             <div class="text-section">
-              <h5 class="card-title fw-bold">{{ cart.product.name }}</h5>
+              <h5 class="card-title fw-bold">{{ cart.productSize.product.name }}</h5>
               <p class="card-text">Cantidad: {{ cart.quantity }}</p>
-              <p class="card-text">Precio: ${{ cart.quantity * cart.product.price }}</p>
+              <p class="card-text ">Talla: <strong class="text-uppercase">{{ cart.productSize.size.name }}</strong> </p>
+              <p class="card-text">Precio: ${{ cart.quantity * cart.productSize.product.price }}</p>
             </div>
             <div class="cta-section">
               <a (click)="removeFromCart(cart.id_cart)" class="btn btn-danger">Eliminar</a>

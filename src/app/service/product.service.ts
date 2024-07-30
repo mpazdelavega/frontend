@@ -15,7 +15,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   findAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url);
+    return this.http.get<Product[]>(`${this.url}/with-stock`);
   }
 
   findAllPageable(page: number): Observable<any> {

@@ -31,7 +31,7 @@ export class ShoppingCartComponent implements OnInit{
     if (productId) {
       console.log(productId);
       this.cartService.removeFromCart(productId).subscribe(() => {
-        this.cartItems = this.cartItems.filter(item => item.product.id !== productId);
+        this.cartItems = this.cartItems.filter(item => item.productSize.product.id !== productId);
         this.loadCartItems();
       });
     }

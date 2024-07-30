@@ -13,7 +13,7 @@
           <span class="topbar">
             <span class="badge tag-discount"> -{{product.discount}}% </span>
           </span>
-          <img class="mix-blend-mode" src={{product.photo}} alt="Polera Chile">
+          <a [routerLink]="['/product', product.id]"><img class="mix-blend-mode" src={{product.photo}} alt="Polera Chile"></a>
         </div>
         <div class="card-product-info">
           <p class="title text-dark">{{product.name}}</p>
@@ -22,7 +22,7 @@
             <del class="discount-price">${{product.price}}</del>
           </div>
           <!-- <button class="btn btn-sm w-100 mt-2" (click)="addToCart(product.id)">Agregar a carrito</button> -->
-          <button class="btn btn-sm w-100 mt-2" [routerLink]="['/product', product.id]">Detalles</button>
+          <!-- <button class="btn btn-sm w-100 mt-2" [routerLink]="['/product', product.id]">Detalles</button> -->
         </div>
       </figure>
     </div>
