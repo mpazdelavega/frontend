@@ -20,6 +20,8 @@ export class NavbarComponent implements OnInit{
 
   @Input() category = {}
 
+  @Input() gender = {}
+
   //@Input() productCart: CartProduct[] = [];
 
   cartItems: CartProduct[] = [];

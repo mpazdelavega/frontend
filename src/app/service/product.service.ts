@@ -34,4 +34,17 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.url}/filter2?category=${category}&page=${page}`);
   }
 
+  // New methods
+  getProductsByCategoryWithStock(category: string): Observable<any[]> {
+    return this.http.get<Product[]>(`${this.url}/with-stock-category?category=${category}`);
+  }
+
+  getProductsByCategoryAndGender(category: string, gender: string, page: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/by-category-gender?category=${category}&gender=${gender}&page=${page}`);
+  }
+
+  getProductsByBrand(brand: string, page: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.url}/brand?brand=${brand}`);
+  }
+
 }

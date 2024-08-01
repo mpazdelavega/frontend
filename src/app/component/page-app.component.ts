@@ -22,6 +22,7 @@ export class PageAppComponent {
   product: Product[] = [];
   paginator: any = {};
   category: any = {};
+  gender: any = {};
   currentRoute!: string;
 
   constructor(
@@ -50,6 +51,7 @@ export class PageAppComponent {
       this.product = pageable.product;
       this.paginator = pageable.paginator;
       this.category = pageable.category;
+      this.gender = pageable.gender;
     });
   }
 

@@ -23,5 +23,21 @@ export const routes: Routes = [
     {
         path: 'products/filter2', 
         component: CardComponent
+    },
+    {
+        path: 'products/category/:category', 
+        component: CardComponent
+    },
+    {
+        path: 'products/by-category-gender', 
+        component: CardComponent
+    },
+    {
+        path: 'products/gender/:gender', 
+        component: CardComponent
+    },
+    {
+        path: 'products/brand/:brand', 
+        component: CardComponent
     }
 ];
