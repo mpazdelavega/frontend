@@ -5,7 +5,7 @@ import { DetailsProductComponent } from './component/details-product/details-pro
 
 export const routes: Routes = [
     {
-        path: 'products/page/:page', 
+        path: 'products/page', 
         component: CardComponent
     },
     {
@@ -39,5 +39,8 @@ export const routes: Routes = [
     {
         path: 'products/brand/:brand', 
         component: CardComponent
+    },
+    { path: 'products/filter-products', 
+        component: CardComponent 
     }
 ];

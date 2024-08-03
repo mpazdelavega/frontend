@@ -19,7 +19,7 @@ export class ProductService {
   }
 
   findAllPageable(page: number): Observable<any> {
-    return this.http.get<any[]>(`${this.url}/page/${page}`);
+    return this.http.get<any[]>(`${this.url}/page?page=${page}`);
   }
 
   getProductById(id: number): Observable<Product> {
@@ -45,6 +45,13 @@ export class ProductService {
 
   getProductsByBrand(brand: string, page: number): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.url}/brand?brand=${brand}`);
+  }
+
+  getProductsFiltered(genders: string[], brands: string[], page: number): Observable<any> {
+    const genderParam = genders.length > 0 ? `gender=${genders.join(',')}` : '';
+    const brandParam = brands.length > 0 ? `brand=${brands.join(',')}` : '';
+    const params = [genderParam, brandParam].filter(param => param).join('&');
+    return this.http.get<any>(`${this.url}/filter-products?${params}&page=${page}`);
   }
 
 }
