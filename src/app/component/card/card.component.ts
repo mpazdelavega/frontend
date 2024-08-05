@@ -41,6 +41,7 @@ export class CardComponent {
   selectedBrands: { [key: string]: boolean } = {};
   genderSelected: string[] = [];
   brandSelected: string[] = [];
+  inHomeURL: boolean = false;
 
   constructor(
     private service: ProductService,
@@ -68,6 +69,7 @@ export class CardComponent {
       const gender = params['gender'];
 
       if (this.router.url === '/') {
+        this.inHomeURL = true;
         this.visibleProducts = 4;
         this.showViewMoreButton = true;
         this.showSupplements = true;
@@ -82,7 +84,7 @@ export class CardComponent {
         });
       }
       else if (this.router.url.startsWith('/products/page')) {
-        //this.currentUrl = '/products/page';
+        this.inHomeURL = false;
         this.visibleProducts = 8;
         this.showViewMoreButton = false;
         this.showSupplements = false;
@@ -98,7 +100,7 @@ export class CardComponent {
 
       }
       else if (this.router.url.startsWith('/products/filter2')) {
-        //this.currentUrl = '/products/filter2';
+        this.inHomeURL = false;
         this.visibleProducts = 8;
         this.showViewMoreButton = false;
         this.showSupplements = false;
@@ -110,7 +112,7 @@ export class CardComponent {
         });
       }
       else if (this.router.url.startsWith('/products/by-category-gender')) {
-        //this.currentUrl = '/products/by-category-gender';
+        this.inHomeURL = false;
         this.visibleProducts = 8;
         this.showViewMoreButton = false;
         this.showSupplements = false;
@@ -122,8 +124,8 @@ export class CardComponent {
           this.sharingData.pageProductEventEmitter.emit({ product: this.product, paginator: this.paginator, category: this.category, gender: this.gender });
         });
       }
-      else if (this.router.url.startsWith('/products/filter-products')) {
-        //this.currentUrl = '/products/filter-products';
+      else if (this.router.url.startsWith('/products/all')) {
+        this.inHomeURL = false;
         this.visibleProducts = 8;
         this.showViewMoreButton = false;
         this.showSupplements = false;
@@ -165,6 +167,7 @@ export class CardComponent {
     if (selectedBrands.length > 0) {
       queryParams.brand = selectedBrands.join(',');
     }
-    this.router.navigate(['/products/filter-products'], { queryParams });
+    this.router.navigate(['/products/all'], { queryParams });
   }
+  
 }

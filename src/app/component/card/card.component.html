@@ -1,16 +1,17 @@
+@if(!inHomeURL){
 <div class="container custom-container mt-5">
   <div class="row">
     <!-- Filtros -->
     <div *ngIf="showFilters" class="col-2 filter-container">
-      <h5>Filtros</h5>
-      <div class="filter-section">
+      <h5 class="text-dark">Filtros</h5>
+      <div class="filter-section text-dark">
         <h6>Género</h6>
         <div *ngFor="let gender of genders">
           <input type="checkbox" [id]="gender" (change)="onFilterChange()" [(ngModel)]="selectedGenders[gender]">
           <label [for]="gender">{{ gender }}</label>
         </div>
       </div>
-      <div class="filter-section">
+      <div class="filter-section text-dark">
         <h6>Marca</h6>
         <div *ngFor="let brand of brands">
           <input type="checkbox" [id]="brand" (change)="onFilterChange()" [(ngModel)]="selectedBrands[brand]">
@@ -30,7 +31,8 @@
 
       <div *ngIf="product.length === 0" class="alert alert-warning">No hay registros en el sistema</div>
       <div *ngIf="product.length > 0" class="row justify-content-center g-4">
-        <div *ngFor="let product of product | slice:0:visibleProducts; let i = index" class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-four mb-4 mt-5">
+        <div *ngFor="let product of product | slice:0:visibleProducts; let i = index"
+          class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-four mb-4 mt-5">
           <figure class="card card-product-grid h-100">
             <div class="img-wrap rounded bg-gray-light">
               <span class="topbar">
@@ -53,7 +55,8 @@
 
       <div class="row">
         <div class="col-12 text-center">
-          <button *ngIf="showViewMoreButton" [routerLink]="['/products/filter2']" [queryParams]="{ category: 'camiseta', page: 0 }" class="btn btn-primary mt-3">Ver más</button>
+          <button *ngIf="showViewMoreButton" [routerLink]="['/products/filter2']"
+            [queryParams]="{ category: 'camiseta', page: 0 }" class="btn btn-primary mt-3">Ver más</button>
         </div>
       </div>
 
@@ -61,7 +64,8 @@
         <h6 class="text-center text-dark mt-5">Suplementos</h6>
         <div *ngIf="supplementProducts.length === 0" class="alert alert-warning">No hay registros en el sistema</div>
         <div *ngIf="supplementProducts.length > 0" class="row justify-content-center g-4">
-          <div *ngFor="let product of supplementProducts | slice:0:4" class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-four mb-4 mt-5">
+          <div *ngFor="let product of supplementProducts | slice:0:4"
+            class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-four mb-4 mt-5">
             <figure class="card card-product-grid h-100">
               <div class="img-wrap rounded bg-gray-light">
                 <span class="topbar">
@@ -84,11 +88,93 @@
 
       <div class="row">
         <div class="col-12 text-center">
-          <button *ngIf="showViewMoreButton" [routerLink]="['/products/filter2']" [queryParams]="{ category: 'suplemento', page: 0 }" class="btn btn-primary mt-3">Ver más</button>
+          <button *ngIf="showViewMoreButton" [routerLink]="['/products/filter2']"
+            [queryParams]="{ category: 'suplemento', page: 0 }" class="btn btn-primary mt-3">Ver más</button>
         </div>
       </div>
 
-      <paginator [paginator]="paginator" [category]="category" [gender]="gender" [brand]="brand" [url]="currentUrl"></paginator>
+      <paginator [paginator]="paginator" [category]="category" [gender]="gender" [brand]="brand" [url]="currentUrl">
+      </paginator>
     </div>
   </div>
 </div>
+} @else {
+<!-- Tarjetas de productos -->
+<div class="container custom-container mt-5">
+  <div *ngIf="category">
+    <h6 class="text-center text-dark capitalize-first-letter">{{ category }}</h6>
+  </div>
+  <div *ngIf="!category">
+    <h6 class="text-center text-dark capitalize-first-letter">Productos</h6>
+  </div>
+
+  <div *ngIf="product.length === 0" class="alert alert-warning">No hay registros en el sistema</div>
+  <div *ngIf="product.length > 0" class="row justify-content-center g-4">
+    <div *ngFor="let product of product | slice:0:visibleProducts; let i = index"
+      class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-four mb-4 mt-5">
+      <figure class="card card-product-grid h-100">
+        <div class="img-wrap rounded bg-gray-light">
+          <span class="topbar">
+            <span class="badge tag-discount"> -{{ product.discount }}% </span>
+          </span>
+          <a [routerLink]="['/product', product.id]">
+            <img class="mix-blend-mode" [src]="product.photo" alt="Polera Chile">
+          </a>
+        </div>
+        <div class="card-product-info">
+          <p class="title text-dark">{{ product.name }}</p>
+          <div class="price-wrap">
+            <span class="price me-2">$ {{ product.price - (product.price * product.discount / 100) }}</span>
+            <del class="discount-price">${{ product.price }}</del>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <button *ngIf="showViewMoreButton" [routerLink]="['/products/filter2']"
+        [queryParams]="{ category: 'camiseta', page: 0 }" class="btn btn-primary mt-3">Ver más</button>
+    </div>
+  </div>
+
+  <div *ngIf="showSupplements">
+    <h6 class="text-center text-dark mt-5">Suplementos</h6>
+    <div *ngIf="supplementProducts.length === 0" class="alert alert-warning">No hay registros en el sistema</div>
+    <div *ngIf="supplementProducts.length > 0" class="row justify-content-center g-4">
+      <div *ngFor="let product of supplementProducts | slice:0:4"
+        class="col-6 col-sm-6 col-md-4 col-lg-3 col-lg-four mb-4 mt-5">
+        <figure class="card card-product-grid h-100">
+          <div class="img-wrap rounded bg-gray-light">
+            <span class="topbar">
+              <span class="badge tag-discount"> -{{ product.discount }}% </span>
+            </span>
+            <img class="mix-blend-mode" [src]="product.photo" alt="Suplemento">
+          </div>
+          <div class="card-product-info">
+            <p class="title text-dark">{{ product.name }}</p>
+            <div class="price-wrap">
+              <span class="price me-2">$ {{ product.price - (product.price * product.discount / 100) }}</span>
+              <del class="discount-price">${{ product.price }}</del>
+            </div>
+            <button class="btn btn-sm w-100 mt-2" [routerLink]="['/product', product.id]">Detalles</button>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <button *ngIf="showViewMoreButton" [routerLink]="['/products/filter2']"
+        [queryParams]="{ category: 'suplemento', page: 0 }" class="btn btn-primary mt-3">Ver más</button>
+    </div>
+  </div>
+
+  <paginator [paginator]="paginator" [category]="category" [gender]="gender" [brand]="brand" [url]="currentUrl">
+  </paginator>
+</div>
+
+
+}

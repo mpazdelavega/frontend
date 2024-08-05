@@ -51,7 +51,7 @@ export class ProductService {
     const genderParam = genders.length > 0 ? `gender=${genders.join(',')}` : '';
     const brandParam = brands.length > 0 ? `brand=${brands.join(',')}` : '';
     const params = [genderParam, brandParam].filter(param => param).join('&');
-    return this.http.get<any>(`${this.url}/filter-products?${params}&page=${page}`);
+    return this.http.get<any>(`${this.url}/all?${params}&page=${page}`);
   }
 
 }

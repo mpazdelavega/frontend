@@ -40,7 +40,8 @@ export const routes: Routes = [
         path: 'products/brand/:brand', 
         component: CardComponent
     },
-    { path: 'products/filter-products', 
+    { 
+        path: 'products/all', 
         component: CardComponent 
     }
 ];
