@@ -11,7 +11,7 @@
   color: #fff;
 }
 .card.card.bg-light-subtle .card-title {
-  color: dimgrey;
+  color: rgb(0, 0, 0);
 }
 
 .card img {
@@ -43,4 +43,25 @@
   .card {
     font-size: 0.9em;
   }
+}
+
+.card-text{
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.discount {
+    color: #e13454;
+    font-weight: 600;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.list-group-item {
+    font-size: 20px;
+}
+.list-group-item .badge {
+  color: black;
+  font-size: 22px;
 }

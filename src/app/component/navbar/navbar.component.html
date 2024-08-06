@@ -37,10 +37,16 @@
                     <a class="nav-link" routerLink="/products/all">Productos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/products/filter2']" [queryParams]="{ category: 'camiseta', page: 0 }">Camisetas</a>
+                    <a class="nav-link">Hombre</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/products/filter2']" [queryParams]="{ category: 'camiseta', page: 0 }">Hombre</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link">Mujer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/products/filter2']" [queryParams]="{ category: 'suplemento', page: 0 }">Suplementos</a>
+                    <a class="nav-link">Niños</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/cart">Carro ({{ cartItemCount  }})</a>

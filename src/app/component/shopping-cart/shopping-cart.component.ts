@@ -14,6 +14,7 @@ import { CartProduct } from '../../model/cart';
 export class ShoppingCartComponent implements OnInit{
 
   cartItems: CartProduct[] = [];
+  shippingCost: number = 3000;
 
   constructor(private cartService: CartService) {}
 
@@ -35,6 +36,16 @@ export class ShoppingCartComponent implements OnInit{
         this.loadCartItems();
       });
     }
+  }
+
+  getSubtotal(): number {
+    return this.cartItems.reduce((acc, item) => 
+      acc + (item.quantity * (item.productSize.product.price * (1 - item.productSize.product.discount / 100))),
+    0);
+  }
+  
+  getTotal(): number {
+    return this.getSubtotal() + this.shippingCost;
   }
 
 }
