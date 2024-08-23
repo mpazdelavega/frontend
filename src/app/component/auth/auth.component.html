@@ -1,0 +1,53 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 title text-center text-dark">MI CUENTA</div>
+    <div class="col-12 col-md-6 mb-4">
+      <h2 class="text-center text-dark">Iniciar Sesión</h2>
+      <form class="bg-dark" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="username" class="form-label">Correo Electrónico / Nombre usuario</label>
+          <input type="email" placeholder="manuel@gmail.com" class="form-control" name="username"
+            [(ngModel)]="user.username" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" placeholder="*********" class="form-control" name="password"
+            [(ngModel)]="user.password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+      </form>
+    </div>
+
+
+    <div class="col-12 col-md-6" id="navbarNavAuth">
+      <h2 class="text-center text-dark">Registrarse</h2>
+      <form class="bg-dark">
+        <div class="mb-3">
+          <label for="registerName" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="registerName" required>
+        </div>
+        <div class="mb-3">
+          <label for="registerLastname" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="registerLastname" required>
+        </div>
+        <div class="mb-3">
+          <label for="registerEmail" class="form-label">Correo Electrónico</label>
+          <input type="email" class="form-control" id="registerEmail" required>
+        </div>
+        <div class="mb-3">
+          <label for="registerUsername" class="form-label">Nombre usuario</label>
+          <input type="text" class="form-control" id="registerUsername" required>
+        </div>
+        <div class="mb-3">
+          <label for="registerPassword" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="registerPassword" required>
+        </div>
+        <div class="mb-3">
+          <label for="registerConfirmPassword" class="form-label">Confirmar Contraseña</label>
+          <input type="password" class="form-control" id="registerConfirmPassword" required>
+        </div>
+        <button type="submit" class="btn btn-secondary w-100">Registrarse</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,10 @@ import { Routes } from '@angular/router';
 import { CardComponent } from './component/card/card.component';
 import { ShoppingCartComponent } from './component/shopping-cart/shopping-cart.component';
 import { DetailsProductComponent } from './component/details-product/details-product.component';
-import { LoginComponent } from './component/login/login.component';
+import { AuthComponent } from './component/auth/auth.component';
+import { UserComponent } from './component/user/user.component';
+import { UserFormComponent } from './component/user-form/user-form.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -15,7 +18,7 @@ export const routes: Routes = [
     },
     {
         path: 'login',
-        component: LoginComponent
+        component: AuthComponent
     },
     {
         path: 'product/:id',
@@ -48,5 +51,23 @@ export const routes: Routes = [
     { 
         path: 'products/all', 
         component: CardComponent 
+    },
+    {
+        path: 'users',
+        component: UserComponent,
+    },
+    {
+        path: 'users/page/:page',
+        component: UserComponent,
+    },
+    {
+        path: 'users/create', 
+        component: UserFormComponent,
+        canActivate: [authGuard]
+    },
+    {
+        path: 'users/edit/:id',
+        component: UserFormComponent,
+        canActivate: [authGuard]
     }
 ];

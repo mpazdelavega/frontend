@@ -5,6 +5,7 @@ import { CartService } from '../../service/cart.service';
 import { CartProduct } from '../../model/cart';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faInstagram, faFacebook, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { User } from '../../model/user';
 
 @Component({
   selector: 'navbar',
@@ -21,6 +22,8 @@ export class NavbarComponent implements OnInit{
   @Input() category = {}
 
   @Input() gender = {}
+
+  @Input() users: User[] = [];
 
   //@Input() productCart: CartProduct[] = [];
 

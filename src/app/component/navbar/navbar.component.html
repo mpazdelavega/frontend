@@ -49,6 +49,10 @@
                     <a class="nav-link">Niños</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/users']"
+                    [state]="{users, paginator}">Usuarios</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" routerLink="/cart">Carro ({{ cartItemCount  }})</a>
                 </li>
                 <li class="nav-item">
