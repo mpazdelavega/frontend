@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../model/user';
+import { SharingDataService } from '../../service/sharing-data.service';
 
 @Component({
   selector: 'auth',
@@ -13,7 +14,7 @@ export class AuthComponent {
 
   user: User;
 
-  constructor() {
+  constructor(private sharingData: SharingDataService) {
     this.user = new User();
   }
 
@@ -22,6 +23,7 @@ export class AuthComponent {
       alert('User y/o password requerido');
     } else {
       console.log(this.user);
+      this.sharingData.handlerLoginEventEmitter.emit({username: this.user.username, password: this.user.password});
     }
   }
 

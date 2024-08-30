@@ -20,7 +20,13 @@ export class SharingDataService {
 
   private _newUserEventEmitter: EventEmitter<User> = new EventEmitter();
 
+  private _handlerLoginEventEmitter = new EventEmitter();
+
   constructor() { }
+
+  get handlerLoginEventEmitter(){
+    return this._handlerLoginEventEmitter;
+  }
 
   get pageProductEventEmitter() {
     return this._pageProductEventEmitter;
