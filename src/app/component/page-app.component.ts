@@ -14,6 +14,7 @@ import { UserService } from '../service/user.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { User } from '../model/user';
 import Swal from 'sweetalert2';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'page-app',
@@ -36,6 +37,7 @@ export class PageAppComponent {
     private service: ProductService,
     private userService: UserService,
     private sharingData: SharingDataService,
+    private authService: AuthService,
   private route: ActivatedRoute) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -69,6 +71,33 @@ export class PageAppComponent {
   handlerLogin(){
     this.sharingData.handlerLoginEventEmitter.subscribe(({username, password}) =>{
       console.log(username + ' ' + password);
+
+      this.authService.loginUser({username, password}).subscribe({
+        next: response => {
+          const token = response.token;
+          console.log(token);
+          const payload = JSON.parse(atob(token.split(".")[1]));
+
+          const user = { username: payload.sub};
+          const login = {
+            user,
+            isAuth: true,
+            isAdmin: payload.isAdmin
+          }
+          this.authService.token = token;
+          this.authService.user = login;
+          
+          this.router.navigate(['/']);
+        },
+        error: error => {
+          if(error.status == 401){
+            console.log(error.error);
+            Swal.fire('Error en el Login', error.error.message, 'error');
+          } else {
+            throw error;
+          }
+        }
+      })
     })
   }
 
