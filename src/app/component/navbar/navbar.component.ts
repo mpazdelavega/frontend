@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../model/product';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CartService } from '../../service/cart.service';
 import { CartProduct } from '../../model/cart';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faInstagram, faFacebook, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { User } from '../../model/user';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'navbar',
@@ -31,7 +32,7 @@ export class NavbarComponent implements OnInit{
 
   cartItemCount: number = 0;
 
-  constructor(private cartService: CartService, library: FaIconLibrary) {
+  constructor(private cartService: CartService, library: FaIconLibrary, private authService: AuthService, private router: Router) {
     library.addIcons(faInstagram, faFacebook, faWhatsapp);
   }
 
@@ -46,6 +47,19 @@ export class NavbarComponent implements OnInit{
     this.cartService.loadCartItems().subscribe((items: CartProduct[]) => {
       this.cartItems = items;
     });
+  }
+
+  get login() {
+    return this.authService.user;
+  }
+
+  get admin(){
+    return this.authService.isAdmin();
+  }
+
+  handlerLogout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
 }
