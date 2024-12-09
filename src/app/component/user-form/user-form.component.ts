@@ -36,6 +36,10 @@ export class UserFormComponent implements OnInit {
         // this.service.findById(id).subscribe(user => this.user = user);
       }
     });
+    this.sharingData.selectUserEventEmitter.subscribe(user => {
+      console.log("----------Usuario recibido:", user);
+      this.user = user || new User();
+    });
   }
 
   onSubmit(userForm: NgForm): void {
