@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { User } from '../../model/user';
 import { ActivatedRoute } from '@angular/router';
 import { SharingDataService } from '../../service/sharing-data.service';
@@ -8,7 +9,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.css'
 })
@@ -19,26 +20,24 @@ export class UserFormComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private sharingData: SharingDataService,
+    private userService: UserService,
     private service: UserService) {
     this.user = new User();
   }
 
   ngOnInit(): void {
-
-    this.sharingData.errorsUserFormEventEmitter.subscribe(errors => this.errors = errors);
-    this.sharingData.selectUserEventEmitter.subscribe(user => this.user = user);
-
     this.route.paramMap.subscribe(params => {
       const id: number = +(params.get('id') || '0');
-
       if (id > 0) {
-        this.sharingData.findUserByIdEventEmitter.emit(id);
-        // this.service.findById(id).subscribe(user => this.user = user);
+        this.userService.findById(id).subscribe(
+          (user) => {
+            this.user = user;
+          },
+          (error) => {
+            console.error('Error al obtener el usuario:', error);
+          }
+        );
       }
-    });
-    this.sharingData.selectUserEventEmitter.subscribe(user => {
-      console.log("----------Usuario recibido:", user);
-      this.user = user || new User();
     });
   }
 
